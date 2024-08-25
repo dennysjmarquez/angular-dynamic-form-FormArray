@@ -103,6 +103,14 @@ Para adaptar el componente a diferentes casos de uso, modifica los campos en la 
 #### Código TypeScript (`user-form.component.ts`)
 
 ```typescript
+/**
+ * @fileoverview Componente de formulario dinámico en Angular utilizando FormArray para manejar grupos de campos repetibles.
+ * 
+ * @autor Dennys Jose Marquez Reyes - dennysjmarquez
+ * Contacto: dennysjmarquez@gmail.com
+ * Sitio Web: https://dennysjmarquez.dev/
+ */
+
 import {
   AfterViewInit,
   ChangeDetectorRef,
