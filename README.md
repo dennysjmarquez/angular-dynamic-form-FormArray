@@ -172,40 +172,33 @@ export class UserFormComponent implements OnInit, AfterViewInit, OnDestroy {
 1. `<form #f="ngForm" [formGroup]="form" novalidate>`
    - **`#f="ngForm"`**: Esta directiva localiza el formulario en la plantilla y lo asigna a la variable `f`, que se puede usar para acceder a las propiedades y métodos del formulario en la plantilla.
    - **`[formGroup]="form"`**: Esta directiva vincula el formulario HTML al `FormGroup` definido en el componente TypeScript. `form` es el nombre de la propiedad del `FormGroup` en el componente.
-   - **`novalidate`**: Este atributo desactiva la validación nativa del navegador, permitiendo que Angular maneje la validación.
 
 2. `<div class="form-array" formArrayName="items">`
-   - **`formArrayName="items"`**: Vincula el `FormArray` llamado `items` del `FormGroup` al contenedor `div`. Esto permite iterar sobre los controles del `FormArray`.
+   - **`formArrayName="items"`**: Vincula el `FormArray` llamado `items` del `FormGroup` al contenedor. Esto permite iterar sobre los controles del `FormArray`.
 
 3. `<ng-container *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="form-item">`
    - **`*ngFor="let item of items.controls; let i = index"`**: Itera sobre los controles del `FormArray` `items` y asigna cada control a `item` con su índice `i`.
    - **`[formGroupName]="i"`**: Vincula cada elemento del `FormArray` a un `FormGroup` específico basado en su índice `i`.
 
-4. `<div class="form-group">`
-   - Este `div` se usa para agrupar los elementos del formulario, como etiquetas y campos de entrada.
-
-5. `<label class="form-label">Nombre</label>`
+4. `<label class="form-label">Nombre</label>`
    - Etiqueta para el campo de entrada "Nombre".
 
-6. `<input formControlName="nombre" class="form-control" required />`
+5. `<input formControlName="nombre" class="form-control" required />`
    - **`formControlName="nombre"`**: Vincula el campo de entrada al control de formulario llamado `nombre` dentro del `FormGroup` actual.
-   - **`class="form-control"`**: Clase CSS para aplicar estilos al campo de entrada.
-   - **`required`**: Atributo HTML para marcar el campo como obligatorio.
 
-7. `<div class="invalid-feedback" *ngIf="f.form.get(['items', i, 'nombre'])?.invalid">`
+6. `<div class="invalid-feedback" *ngIf="f.form.get(['items', i, 'nombre'])?.invalid">`
    - **`*ngIf="f.form.get(['items', i, 'nombre'])?.invalid"`**: Muestra el mensaje de error si el control de formulario `nombre` es inválido. `f.form.get(['items', i, 'nombre'])` accede al control `nombre` dentro del `FormArray` en el índice `i`.
 
-# Resumen de Directivas y Atributos
+La expresión `['items', i, 'nombre']` se usa para acceder a un control de formulario específico dentro de un `FormArray` anidado en un `FormGroup`. Aquí está el desglose de cada elemento en la expresión:
 
-- **`#f="ngForm"`**: Referencia local al formulario.
-- **`[formGroup]="form"`**: Vincula el formulario HTML al `FormGroup` en el componente.
-- **`novalidate`**: Desactiva la validación nativa del navegador.
-- **`formArrayName="items"`**: Vincula un `FormArray` al contenedor `div`.
-- **`*ngFor="let item of items.controls; let i = index"`**: Itera sobre los controles del `FormArray`.
-- **`[formGroupName]="i"`**: Vincula cada control del `FormArray` a un `FormGroup` basado en su índice.
-- **`formControlName="nombre"`**: Vincula un campo de entrada a un control de formulario específico.
-- **`*ngIf="f.form.get(['items', i, 'nombre'])?.invalid"`**: Muestra un mensaje de error si el control de formulario es inválido.
+1. **`'items'`**:
+   - Este es el nombre del `FormArray` dentro del `FormGroup` principal. El `FormArray` `items` contiene múltiples `FormGroup` o controles de formulario individuales.
 
+2. **`i`**:
+   - `i` es el índice del elemento actual en el `FormArray` `items`. Este índice se obtiene del bucle `*ngFor="let item of items.controls; let i = index"`, donde `i` representa la posición del `FormGroup` o control de formulario actual dentro del `FormArray`.
+
+3. **`'nombre'`**:
+   - Este es el nombre del control de formulario dentro del `FormGroup` en la posición `i` del `FormArray`. En este caso, es el control de formulario que maneja el campo de entrada para "Nombre".
 
 ## Contribuciones
 
