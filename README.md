@@ -1,5 +1,6 @@
 # Plantilla angular-dynamic-form-FormArray
-Componente de formulario dinámico en Angular utilizando FormArray para manejar grupos de campos repetibles.
+
+Este componente de formulario dinámico en Angular utiliza FormArray para manejar grupos de campos repetibles de manera correcta, eficiente y flexible.
 
 ## Características
 
